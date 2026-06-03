@@ -13,8 +13,8 @@
       --border: #252b38;
       --border-focus: #4a5cff;
       --text: #e2e5ec;
-      --text-secondary: #cbd5e1;
-      --text-muted: #94a3b8;
+      --text-secondary: #9aa1b4;
+      --text-muted: #6b7280;
       --accent: #8b5cf6;
       --accent-glow: rgba(139, 92, 246, 0.25);
       --green: #10b981;
@@ -56,7 +56,15 @@
     @keyframes fadeSlideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
     .block-card { background:var(--bg-card); border-radius:var(--radius-lg); margin-bottom:10px; padding:16px; border:1px solid var(--border); box-shadow:var(--shadow-card); position:relative; }
     .block-card p { color: var(--text); }
-    .block-subtitle { color: var(--text-secondary); }
+    .block-title { color: white; font-weight:700; font-size:15px; margin-bottom:3px; }
+    /* Подзаголовки делаем белыми на стартовой и финальной странице */
+    #pageStart .block-subtitle,
+    #pageResult .block-subtitle {
+      color: #ffffff;
+      font-size: 11px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
     .progress { font-size:12px; color:var(--text-muted); margin-bottom:8px; }
     .question-text { font-size:14px; color:var(--text); margin-bottom:16px; font-weight:500; }
     .options { display:flex; flex-direction:column; gap:10px; }
@@ -71,7 +79,6 @@
     .nav-btn.primary { background:var(--accent); color:white; border-color:var(--accent); box-shadow:0 4px 12px rgba(139,92,246,0.3); }
     .nav-btn:disabled { opacity:0.3; pointer-events:none; }
     .result-card { background:linear-gradient(145deg,#1a1f2e 0%,#121722 100%); border:2px solid #2a3050; border-radius:var(--radius-lg); padding:18px 16px; margin-top:6px; box-shadow:0 0 24px rgba(139,92,246,0.2); }
-    .result-card .block-subtitle { color: var(--text-secondary); }
     .talent-item { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; }
     .talent-name { color:white; font-weight:600; }
     .talent-domain { color: var(--text-secondary); font-size:11px; }
@@ -97,7 +104,7 @@
       <div class="block-card">
         <div class="block-title">🌟 Оценка талантов (CliftonStrengths)</div>
         <div class="block-subtitle">на основе методики Gallup</div>
-        <p>
+        <p style="color:var(--text); font-size:13px; margin:12px 0;">
           Вам будет предложено 50 пар утверждений. Выберите то, которое больше вам соответствует.
           Отвечайте быстро, доверяя интуиции.
         </p>
@@ -181,7 +188,6 @@
     { id: 33, name: "Strategic", nameRu: "Стратегичность", domain: "Стратегическое мышление", desc: "Способность видеть закономерности и выбирать лучший путь." }
   ];
 
-  // Парные утверждения: [текст1, текст2, id таланта для первого, id таланта для второго]
   const questions = [
     ["Я люблю составлять списки дел и следовать им.", "Я предпочитаю спонтанность и гибкость.", 5, 17],
     ["Я стремлюсь быть лучшим в своём деле.", "Мне важно, чтобы в команде царила гармония.", 13, 21],
@@ -235,7 +241,6 @@
     ["Я чувствую, когда другим нужна помощь.", "Я считаю, что каждый должен справляться сам.", 20, 14]
   ];
 
-  // ===================== ЛОГИКА =====================
   let currentQuestion = 0;
   let answers = new Array(questions.length).fill(-1);
   let timerInterval = null;
