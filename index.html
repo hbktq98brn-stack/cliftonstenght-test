@@ -57,13 +57,10 @@
     .block-card { background:var(--bg-card); border-radius:var(--radius-lg); margin-bottom:10px; padding:16px; border:1px solid var(--border); box-shadow:var(--shadow-card); position:relative; }
     .block-card p { color: var(--text); }
     .block-title { color: white; font-weight:700; font-size:15px; margin-bottom:3px; }
-    /* Подзаголовки делаем белыми на стартовой и финальной странице */
-    #pageStart .block-subtitle,
-    #pageResult .block-subtitle {
-      color: #ffffff;
-      font-size: 11px;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
+    /* Подзаголовки делаем строго белыми */
+    #pageStart .block-title,
+    #pageResult .block-title {
+      color: #ffffff !important;
     }
     .progress { font-size:12px; color:var(--text-muted); margin-bottom:8px; }
     .question-text { font-size:14px; color:var(--text); margin-bottom:16px; font-weight:500; }
@@ -95,7 +92,7 @@
   </div>
   <div class="app-header">
     <a href="https://max.ru/alproailife" target="_blank" rel="noopener" class="brand">ALPROAILIFE</a>
-    <div class="subtitle">оценка талантов · CliftonStrengths</div>
+    <div class="Subtitle">оценка талантов · CliftonStrengths</div>
   </div>
 
   <div class="scroll-content" id="scrollContent">
@@ -103,7 +100,7 @@
     <div class="page active" id="pageStart">
       <div class="block-card">
         <div class="block-title">🌟 Оценка талантов (CliftonStrengths)</div>
-        <div class="block-subtitle">на основе методики Gallup</div>
+        <div class="block-title">на основе методики Gallup</div>
         <p style="color:var(--text); font-size:13px; margin:12px 0;">
           Вам будет предложено 50 пар утверждений. Выберите то, которое больше вам соответствует.
           Отвечайте быстро, доверяя интуиции.
@@ -133,7 +130,7 @@
       <div class="result-card">
         <div class="block-title">🏆 Ваш Топ-5 талантов</div>
         <div id="top5Container" style="margin:12px 0;"></div>
-        <div class="block-subtitle" style="margin-top:16px;">Ранжирование всех 34 талантов</div>
+        <div class="block-title" style="margin-top:16px;">📊 Ранжирование всех 34 талантов</div>
         <div id="allTalentsContainer"></div>
       </div>
       <button class="nav-btn primary" onclick="location.reload()" style="margin-top:12px;">Пройти заново</button>
